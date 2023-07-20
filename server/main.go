@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"path/filepath"
 	"server/config"
 	"strings"
 
@@ -37,7 +36,7 @@ func main() {
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(result)
 	})
-	filesDir := http.Dir(filepath.Join(config.FolderPath(), "data"))
+	filesDir := http.Dir(config.FolderPath())
 
 	r.Get("/files/*", func(w http.ResponseWriter, r *http.Request) {
 		rctx := chi.RouteContext(r.Context())
@@ -54,7 +53,7 @@ func main() {
 		http.StripPrefix(
 			pathPrefix,
 			http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
+				fmt.Println(r.URL.Path)
 			}),
 		)
 	})
