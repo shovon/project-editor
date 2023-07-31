@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import DanteEditor from "dante3";
 
 export function EditorPage() {
 	const location = useLocation();
@@ -22,5 +21,5 @@ export function EditorPage() {
 			});
 	}, [location]);
 
-	return <DanteEditor content={"hello world"} />;
+	return <div>Editor goes here</div>;
 }
